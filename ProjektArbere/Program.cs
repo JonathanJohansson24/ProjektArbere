@@ -1,16 +1,28 @@
-﻿namespace ProjektArbere
+﻿using System.ComponentModel.Design;
+
+namespace ProjektArbere
 {
     internal class Program
     {
-           static string[] users = new string[] { "hans", "greta", "görgen", "frans", "tage"};
-           static int[] codes = new int[5] { 1177, 2323, 4455, 9900, 8585 };
+        static List<double> checkingAccount = new List<double>();
+        static List<double> savingsAccount = new List<double>();
+        static string[] users = new string[] { "hans", "greta", "görgen", "frans", "tage" };
+        static int[] codes = new int[5] { 1177, 2323, 4455, 9900, 8585 };
 
         static void Main(string[] args)
         {
+            checkingAccount.Add(10000);
+            savingsAccount.Add(15000);
+            bool keepGoing = true;
+
             Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");
+            while (keepGoing)
+            {
 
             DoesAccountExist();
+            MainMenu();
 
+            }
 
         }
 
@@ -39,7 +51,7 @@
             Console.WriteLine("Skriv ditt förnamn för att se om du har ett konto här: ");
             string userName = Console.ReadLine().ToLower();
             bool userExists = false;
-            int tries = 0; 
+            int tries = 0;
             for (int i = 0; i < users.Length; i++)
             {
 
@@ -52,10 +64,10 @@
             if (!userExists)
             {
                 Console.WriteLine($"Tyvärr har vi ingen med namnet som {userName} kund här");
-            }   
+            }
 
             Console.WriteLine("Nu vill jag att du matar in din tillhörande pinkod till ditt konto, du har 3 försök på dig");
-            
+
             while (tries < 3)
             {
                 int userIndex = Array.IndexOf(users, userName);
@@ -64,51 +76,90 @@
                 if (userIndex != -1 && pinCode == codes[userIndex])
                 {
                     Console.WriteLine("Välkommen in, du skrev rätt pinkod");
+                    break;
+                }
+
+                if (tries == 2)
+                {
+                    Console.WriteLine("Du skrev fel kod tre gånger, nu stängs programmet ner");
+                    Environment.Exit(0);
+
                 }
                 else
                 {
                     Console.WriteLine("Fel kod, försök igen:");
                     tries++;
                 }
+
             }
-            Console.WriteLine("Du skrev fel kod tre gånger, nu stängs programmet ner");
 
 
         }
         static void MainMenu()
         {
-            Console.WriteLine($@"1. Se dina konton och saldo
-                                 2. Överföring mellan konton
-                                 3. Ta ut pengar
-                                 4. Logga ut");
-            Console.WriteLine("Var god välj en siffra, 1-4");
-            int choice = Convert.ToInt32( Console.ReadLine() );
-            switch (choice)
+            bool userOptions = true;
+            while (userOptions = true)
             {
-                case 1:
 
-                    break;
+                Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut/sätta in pengar \n4. Logga ut");
 
-                case 2:
+                Console.WriteLine("Var god välj en siffra, 1-4");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Det finns två konton i ditt namn, ett sparkonto och ett lönekonto.");
+                        Console.WriteLine("Vill du se saldot för \n1. Sparkonto. \n2. Lönekonto.");
+                        Console.WriteLine("Var god välj 1 eller 2.");
 
-                    break;
+                        try
+                        {
+                            int userChoice = Convert.ToInt32(Console.ReadLine());
+                            if (userChoice == 1)
+                            {
+                                Console.WriteLine("Sparkonto: ");
+                                double totalSavings = savingsAccount.Sum();
+                                Console.WriteLine($"Ditt saldo är för nuvarande {totalSavings}kr");
+                                
+                            }
+                            if (userChoice == 2)
+                            {
+                                Console.WriteLine("Lönekonto: ");
+                                double totalCheckings = checkingAccount.Sum();
+                                Console.WriteLine($"Ditt saldo är för nuvarande {totalCheckings}kr");
+                                
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                       
 
-                case 3:
+                        break;
 
-                    break;
+                    case 2:
 
-                case 4:
+                        break;
 
-                    break;
+                    case 3:
 
-                default:
-                    Console.WriteLine("Var god välj en siffra");
-                    break;
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
+                        userOptions = false;
+                        continue; 
+                        
+
+                    default:
+                        Console.WriteLine("Var god välj en siffra");
+                        break;
+
+                }
+
 
             }
-
-
         }
-
     }
 }
