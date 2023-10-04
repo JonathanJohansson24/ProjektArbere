@@ -101,41 +101,15 @@ namespace ProjektArbere
             while (userOptions = true)
             {
 
-                Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut/sätta in pengar \n4. Logga ut");
+                Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Sätta in pengar  \n5. Logga ut");
 
                 Console.WriteLine("Var god välj en siffra, 1-4");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Det finns två konton i ditt namn, ett sparkonto och ett lönekonto.");
-                        Console.WriteLine("Vill du se saldot för \n1. Sparkonto. \n2. Lönekonto.");
-                        Console.WriteLine("Var god välj 1 eller 2.");
-
-                        try
-                        {
-                            int userChoice = Convert.ToInt32(Console.ReadLine());
-                            if (userChoice == 1)
-                            {
-                                Console.WriteLine("Sparkonto: ");
-                                double totalSavings = savingsAccount.Sum();
-                                Console.WriteLine($"Ditt saldo är för nuvarande {totalSavings}kr");
-                                
-                            }
-                            if (userChoice == 2)
-                            {
-                                Console.WriteLine("Lönekonto: ");
-                                double totalCheckings = checkingAccount.Sum();
-                                Console.WriteLine($"Ditt saldo är för nuvarande {totalCheckings}kr");
-                                
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex);
-                        }
-                       
-
+                        Console.Clear();
+                        UserAccounts();
                         break;
 
                     case 2:
@@ -143,14 +117,17 @@ namespace ProjektArbere
                         break;
 
                     case 3:
-
+                        WithdrawFunds();
                         break;
 
                     case 4:
+                        AddFunds();
+                        continue;
+                    case 5:
                         Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
                         userOptions = false;
-                        continue; 
-                        
+                        break;
+
 
                     default:
                         Console.WriteLine("Var god välj en siffra");
@@ -160,6 +137,43 @@ namespace ProjektArbere
 
 
             }
+        }
+        static void UserAccounts()
+        {
+            Console.WriteLine("Det finns två konton i ditt namn, ett sparkonto och ett lönekonto.");
+            Console.WriteLine("Vill du se saldot för \n1. Sparkonto. \n2. Lönekonto.");
+            Console.WriteLine("Var god välj 1 eller 2.");
+
+            try
+            {
+                int userChoice = Convert.ToInt32(Console.ReadLine());
+                if (userChoice == 1)
+                {
+                    Console.WriteLine("Sparkonto: ");
+                    double totalSavings = savingsAccount.Sum();
+                    Console.WriteLine($"Ditt saldo är för nuvarande {totalSavings}kr");
+
+                }
+                if (userChoice == 2)
+                {
+                    Console.WriteLine("Lönekonto: ");
+                    double totalCheckings = checkingAccount.Sum();
+                    Console.WriteLine($"Ditt saldo är för nuvarande {totalCheckings}kr");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        static void AddFunds()
+        {
+
+        }
+        static void WithdrawFunds()
+        {
+
         }
     }
 }
