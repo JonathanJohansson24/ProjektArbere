@@ -113,7 +113,7 @@ namespace ProjektArbere
                         break;
 
                     case 2:
-
+                        TransferFunds();
                         break;
 
                     case 3:
@@ -172,6 +172,10 @@ namespace ProjektArbere
 
         }
         static void WithdrawFunds()
+        {
+
+        }
+        static void TransferFunds()
         {
 
         }
