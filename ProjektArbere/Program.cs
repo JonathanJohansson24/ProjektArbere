@@ -19,8 +19,8 @@ namespace ProjektArbere
             while (keepGoing)
             {
 
-            DoesAccountExist();
-            MainMenu();
+                DoesAccountExist();
+
 
             }
 
@@ -52,19 +52,26 @@ namespace ProjektArbere
             string userName = Console.ReadLine().ToLower();
             bool userExists = false;
             int tries = 0;
-            for (int i = 0; i < users.Length; i++)
+            do
             {
-
-                if (users[i] == userName)
+                for (int i = 0; i < users.Length; i++)
                 {
-                    Console.WriteLine($"Hej och välkommen {users[i]}");
-                    userExists = true;
+                    if (users[i] == userName)
+                    {
+                        Console.WriteLine($"Hej och välkommen {users[i]}");
+                        userExists = true;
+                        break;
+                    }
                 }
-            }
-            if (!userExists)
-            {
-                Console.WriteLine($"Tyvärr har vi ingen med namnet som {userName} kund här");
-            }
+
+                if (!userExists)
+                {
+                    Console.WriteLine($"Tyvärr har vi ingen med namnet som {userName} kund här.\n Var vänlig testa igen");
+                    userName = Console.ReadLine().ToLower();
+                }
+            } while (!userExists);
+
+
 
             Console.WriteLine("Nu vill jag att du matar in din tillhörande pinkod till ditt konto, du har 3 försök på dig");
 
@@ -92,13 +99,13 @@ namespace ProjektArbere
                 }
 
             }
-
+            MainMenu();
 
         }
         static void MainMenu()
         {
-            bool userOptions = true;
-            while (userOptions = true)
+            bool userOptions = false;
+            while (!userOptions)
             {
 
                 Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Sätta in pengar  \n5. Logga ut");
@@ -122,10 +129,10 @@ namespace ProjektArbere
 
                     case 4:
                         AddFunds();
-                        continue;
+                        break;
                     case 5:
                         Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
-                        userOptions = false;
+                        userOptions = true;
                         break;
 
 
