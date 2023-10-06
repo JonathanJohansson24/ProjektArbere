@@ -11,9 +11,9 @@ namespace ProjektArbere
 
         static void Main(string[] args)
         {
+            bool keepGoing = true;
             checkingAccount.Add(10000);
             savingsAccount.Add(15000);
-            bool keepGoing = true;
 
             Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");
             while (keepGoing)
@@ -71,15 +71,15 @@ namespace ProjektArbere
                 }
             } while (!userExists);
 
-
+            int pinCode = 0;
 
             Console.WriteLine("Nu vill jag att du matar in din tillhörande pinkod till ditt konto, du har 3 försök på dig");
-
+            Console.Write("Skriv in kod: ");
             while (tries < 3)
             {
+
                 int userIndex = Array.IndexOf(users, userName);
-                Console.Write("Skriv in kod: ");
-                int pinCode = Convert.ToInt32(Console.ReadLine());
+                pinCode = Convert.ToInt32(Console.ReadLine());
                 if (userIndex != -1 && pinCode == codes[userIndex])
                 {
                     Console.WriteLine("Välkommen in, du skrev rätt pinkod");
@@ -99,10 +99,10 @@ namespace ProjektArbere
                 }
 
             }
-            MainMenu();
+            MainMenu(userName, pinCode);
 
         }
-        static void MainMenu()
+        static void MainMenu(string userName, int pinCode)
         {
             bool userOptions = false;
             while (!userOptions)
@@ -124,7 +124,7 @@ namespace ProjektArbere
                         break;
 
                     case 3:
-                        WithdrawFunds();
+                        WithdrawFunds(userName, pinCode);
                         break;
 
                     case 4:
@@ -178,7 +178,7 @@ namespace ProjektArbere
         {
 
         }
-        static void WithdrawFunds()
+        static void WithdrawFunds(string userName, int pinCode)
         {
 
         }
