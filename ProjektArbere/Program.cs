@@ -77,6 +77,8 @@ namespace ProjektArbere
             Console.Write("Skriv in kod: ");
             while (tries < 3)
             {
+                try
+                {
 
                 int userIndex = Array.IndexOf(users, userName);
                 pinCode = Convert.ToInt32(Console.ReadLine());
@@ -96,6 +98,11 @@ namespace ProjektArbere
                 {
                     Console.WriteLine("Fel kod, försök igen:");
                     tries++;
+                }
+                }
+                catch
+                {
+                    Console.WriteLine("Var vänlig skriv endast in siffror: ");
                 }
 
             }
