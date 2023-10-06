@@ -124,7 +124,7 @@ namespace ProjektArbere
                     {
                         case 1:
                             Console.Clear();
-                            UserAccounts();
+                            UserAccounts(userName);
                             break;
 
                         case 2:
@@ -160,8 +160,10 @@ namespace ProjektArbere
 
             }
         }
-        static void UserAccounts()
+        static void UserAccounts(string userName)
         {
+            if (userName == "hans")
+            {
             Console.WriteLine("Det finns två konton i ditt namn, ett sparkonto och ett lönekonto.");
             Console.WriteLine("Vill du se saldot för \n1. Sparkonto. \n2. Lönekonto.");
             Console.WriteLine("Var god välj 1 eller 2.");
@@ -187,6 +189,25 @@ namespace ProjektArbere
             catch 
             {
                 Console.WriteLine("Mata in 1 eller 2.");
+            }
+
+            }
+            if (userName == "greta")
+            {
+
+
+            }
+            if (userName == "görgen")
+            {
+
+            }
+            if (userName == "frans")
+            {
+
+            }
+            if (userName == "tage")
+            {
+
             }
         }
         static void AddFunds()
