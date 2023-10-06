@@ -7,7 +7,7 @@ namespace ProjektArbere
         static List<double> checkingAccount = new List<double>();
         static List<double> savingsAccount = new List<double>();
         static string[] users = new string[] { "hans", "greta", "görgen", "frans", "tage" };
-        static int[] codes = new int[5] { 1177, 2323, 4455, 9900, 8585 };
+        static int[] codes = new int[] { 1177, 2323, 4455, 9900, 8585 };
 
         static void Main(string[] args)
         {
@@ -80,25 +80,25 @@ namespace ProjektArbere
                 try
                 {
 
-                int userIndex = Array.IndexOf(users, userName);
-                pinCode = Convert.ToInt32(Console.ReadLine());
-                if (userIndex != -1 && pinCode == codes[userIndex])
-                {
-                    Console.WriteLine("Välkommen in, du skrev rätt pinkod");
-                    break;
-                }
+                    int userIndex = Array.IndexOf(users, userName);
+                    pinCode = Convert.ToInt32(Console.ReadLine());
+                    if (userIndex != -1 && pinCode == codes[userIndex])
+                    {
+                        Console.WriteLine("Välkommen in, du skrev rätt pinkod");
+                        break;
+                    }
 
-                if (tries == 2)
-                {
-                    Console.WriteLine("Du skrev fel kod tre gånger, nu stängs programmet ner");
-                    Environment.Exit(0);
+                    if (tries == 2)
+                    {
+                        Console.WriteLine("Du skrev fel kod tre gånger, nu stängs programmet ner");
+                        Environment.Exit(0);
 
-                }
-                else
-                {
-                    Console.WriteLine("Fel kod, försök igen:");
-                    tries++;
-                }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fel kod, försök igen:");
+                        tries++;
+                    }
                 }
                 catch
                 {
@@ -116,37 +116,45 @@ namespace ProjektArbere
             {
 
                 Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Sätta in pengar  \n5. Logga ut");
-
-                Console.WriteLine("Var god välj en siffra, 1-4");
-                int choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
+                try
                 {
-                    case 1:
-                        Console.Clear();
-                        UserAccounts();
-                        break;
+                    Console.WriteLine("Var god välj en siffra, 1-4");
+                    int choice = Convert.ToInt32(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.Clear();
+                            UserAccounts();
+                            break;
 
-                    case 2:
-                        TransferFunds();
-                        break;
+                        case 2:
+                            TransferFunds();
+                            break;
 
-                    case 3:
-                        WithdrawFunds(userName, pinCode);
-                        break;
+                        case 3:
+                            WithdrawFunds(userName, pinCode);
+                            break;
 
-                    case 4:
-                        AddFunds();
-                        break;
-                    case 5:
-                        Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
-                        userOptions = true;
-                        break;
+                        case 4:
+                            AddFunds();
+                            break;
+                        case 5:
+                            Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
+                            userOptions = true;
+                            break;
 
 
-                    default:
-                        Console.WriteLine("Var god välj en siffra");
-                        break;
+                        default:
+                            Console.WriteLine("Var god välj en siffra");
+                            break;
 
+                    }
+
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Var god mata in något");
                 }
 
 
@@ -164,21 +172,21 @@ namespace ProjektArbere
                 if (userChoice == 1)
                 {
                     Console.WriteLine("Sparkonto: ");
-                    double totalSavings = savingsAccount.Sum();
-                    Console.WriteLine($"Ditt saldo är för nuvarande {totalSavings}kr");
+                    
+                    Console.WriteLine($"Ditt saldo är för nuvarande {savingsAccount.Sum()}kr");
 
                 }
                 if (userChoice == 2)
                 {
                     Console.WriteLine("Lönekonto: ");
-                    double totalCheckings = checkingAccount.Sum();
-                    Console.WriteLine($"Ditt saldo är för nuvarande {totalCheckings}kr");
+                   
+                    Console.WriteLine($"Ditt saldo är för nuvarande {checkingAccount.Sum()}kr");
 
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Mata in 1 eller 2.");
             }
         }
         static void AddFunds()
@@ -187,6 +195,60 @@ namespace ProjektArbere
         }
         static void WithdrawFunds(string userName, int pinCode)
         {
+            Console.WriteLine("Vilket konto vill du ta ut ifrån?\n\n1. Sparkonto.\n2. Lönekonto.");
+          
+           
+            Console.WriteLine("Var god välj 1 eller 2.");
+
+            try
+            {
+                int userChoice = Convert.ToInt32(Console.ReadLine());
+                if (userChoice == 1)
+                {
+                    Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {savingsAccount.Sum()}kr");
+                    Console.WriteLine("Hur mycket vill du ta ut?");
+                    double withdrawal = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                    int newPin = Convert.ToInt32(Console.ReadLine());
+                    if (newPin == pinCode)
+                    {
+                        savingsAccount[0] -= withdrawal;
+                    Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {savingsAccount.Sum()}");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tyvärr, det var fel pinkod.");
+                    }
+
+
+
+                }
+                if (userChoice == 2)
+                {
+                    Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {checkingAccount.Sum()}kr");
+                    Console.WriteLine("Hur mycket vill du ta ut?");
+                    double withdrawal = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                    int newPin = Convert.ToInt32(Console.ReadLine());
+                    if (newPin == pinCode)
+                    {
+                        checkingAccount[0] -= withdrawal;
+                        Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {checkingAccount.Sum()}");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tyvärr, det var fel pinkod.");
+                    }
+
+
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Mata in 1 eller 2.");
+            }
 
         }
         static void TransferFunds()
