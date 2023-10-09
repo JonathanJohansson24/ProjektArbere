@@ -4,17 +4,26 @@ namespace ProjektArbere
 {
     internal class Program
     {
-        static List<double> checkingAccount = new List<double>();
-        static List<double> savingsAccount = new List<double>();
+        static List<double> hansSavingsAccount = new List<double>();
+        static List<double> hansFoodAccount = new List<double>();
+        static List<double> hansTravelAccount = new List<double>();
+        static List<double> gretasCheckingAccount = new List<double>();
+        static List<double> gretasSavingsAccount = new List<double>();
+        static List<double> görgensSavingsAccount = new List<double>();
+        static List<double> görgensHealthAccount = new List<double>();
+        static List<double> görgensWildlifeAccount = new List<double>();
+        static List<double> fransCheckingAccount = new List<double>();
+        static List<double> fransBowlingAccount = new List<double>();
+        static List<double> tagesCheckingAccount = new List<double>();
+        static List<double> tagesGolfAccount = new List<double>();
         static string[] users = new string[] { "hans", "greta", "görgen", "frans", "tage" };
         static int[] codes = new int[] { 1177, 2323, 4455, 9900, 8585 };
 
         static void Main(string[] args)
         {
             bool keepGoing = true;
-            checkingAccount.Add(10000);
-            savingsAccount.Add(15000);
-
+            AddFunds();
+            
             Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");
             while (keepGoing)
             {
@@ -115,7 +124,7 @@ namespace ProjektArbere
             while (!userOptions)
             {
 
-                Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Sätta in pengar  \n5. Logga ut");
+                Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Logga ut");
                 try
                 {
                     Console.WriteLine("Var god välj en siffra, 1-4");
@@ -135,10 +144,8 @@ namespace ProjektArbere
                             WithdrawFunds(userName, pinCode);
                             break;
 
+                        
                         case 4:
-                            AddFunds();
-                            break;
-                        case 5:
                             Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
                             userOptions = true;
                             break;
@@ -164,61 +171,189 @@ namespace ProjektArbere
         {
             if (userName == "hans")
             {
-            Console.WriteLine("Det finns två konton i ditt namn, ett sparkonto och ett lönekonto.");
-            Console.WriteLine("Vill du se saldot för \n1. Sparkonto. \n2. Lönekonto.");
-            Console.WriteLine("Var god välj 1 eller 2.");
+                Console.WriteLine("Det finns tre konton i ditt namn, ett sparkonto, ett matkonto och ett reskonto.");
+                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Lönekonto \n3: Resekonto");
+                Console.WriteLine("Var god välj 1, 2 eller 3.");
 
-            try
-            {
-                int userChoice = Convert.ToInt32(Console.ReadLine());
-                if (userChoice == 1)
+                try
                 {
-                    Console.WriteLine("Sparkonto: ");
-                    
-                    Console.WriteLine($"Ditt saldo är för nuvarande {savingsAccount.Sum()}kr");
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    if (userChoice == 1)
+                    {
+                        Console.WriteLine("Sparkonto: ");
 
+                        Console.WriteLine($"Ditt saldo är för nuvarande {hansSavingsAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 2)
+                    {
+                        Console.WriteLine("Matkonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {hansFoodAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 3)
+                    {
+                        Console.WriteLine("Resekonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {hansTravelAccount.Sum()}kr");
+                    }
                 }
-                if (userChoice == 2)
+                catch
                 {
-                    Console.WriteLine("Lönekonto: ");
-                   
-                    Console.WriteLine($"Ditt saldo är för nuvarande {checkingAccount.Sum()}kr");
-
+                    Console.WriteLine("Mata in 1, 2 eller 3.");
                 }
-            }
-            catch 
-            {
-                Console.WriteLine("Mata in 1 eller 2.");
-            }
 
             }
             if (userName == "greta")
             {
+                Console.WriteLine("Det finns två konton i ditt namn, ett sparkonto och ett lönekonto.");
+                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Lönekonto");
+                Console.WriteLine("Var god välj 1 eller 2");
 
+                try
+                {
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    if (userChoice == 1)
+                    {
+                        Console.WriteLine("Sparkonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {gretasSavingsAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 2)
+                    {
+                        Console.WriteLine("Lönekonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {gretasCheckingAccount.Sum()}kr");
+
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("Mata in 1 eller 2.");
+                }
 
             }
             if (userName == "görgen")
             {
+                Console.WriteLine("Det finns tre konton i ditt namn, ett sparkonto, ett hälsovårdskonto och ett vildmarkskonto.");
+                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Hälsovårdskonto \n3: Vildmarkskonto");
+                Console.WriteLine("Var god välj 1, 2 eller 3.");
+
+                try
+                {
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    if (userChoice == 1)
+                    {
+                        Console.WriteLine("Sparkonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {görgensSavingsAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 2)
+                    {
+                        Console.WriteLine("Hälsovårdskonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {görgensHealthAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 3)
+                    {
+                        Console.WriteLine("Vildmarkskonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {görgensWildlifeAccount.Sum()}kr");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Mata in 1, 2 eller 3.");
+                }
 
             }
             if (userName == "frans")
             {
+                Console.WriteLine("Det finns två konton i ditt namn, ett lönekonto och ett bowling.");
+                Console.WriteLine("Vill du se saldot för \n1: Lönekonto. \n2: Bowlingkonto");
+                Console.WriteLine("Var god välj 1 eller 2");
 
+                try
+                {
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    if (userChoice == 1)
+                    {
+                        Console.WriteLine("Lönekonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {fransCheckingAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 2)
+                    {
+                        Console.WriteLine("Lönekonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {fransBowlingAccount.Sum()}kr");
+
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("Mata in 1 eller 2.");
+                }
             }
             if (userName == "tage")
             {
+                Console.WriteLine("Det finns två konton i ditt namn, ett lönekonto och ett golfkonto.");
+                Console.WriteLine("Vill du se saldot för \n1: Lönekonto. \n2: Golfkonto");
+                Console.WriteLine("Var god välj 1 eller 2");
 
+                try
+                {
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    if (userChoice == 1)
+                    {
+                        Console.WriteLine("Lönekonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {tagesCheckingAccount.Sum()}kr");
+
+                    }
+                    if (userChoice == 2)
+                    {
+                        Console.WriteLine("Golfkonto: ");
+
+                        Console.WriteLine($"Ditt saldo är för nuvarande {tagesGolfAccount.Sum()}kr");
+
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("Mata in 1 eller 2.");
+                }
             }
         }
+
         static void AddFunds()
         {
-
+            hansFoodAccount.Add(10000);
+            hansSavingsAccount.Add(15000);
+            hansTravelAccount.Add(9000);
+            gretasCheckingAccount.Add(13000);
+            gretasSavingsAccount.Add(21000);
+            görgensSavingsAccount.Add(75000);
+            görgensHealthAccount.Add(8300);
+            görgensWildlifeAccount.Add(6000);
+            fransCheckingAccount.Add(8000);
+            fransBowlingAccount.Add(9000);
+            tagesCheckingAccount.Add(6500);
+            tagesGolfAccount.Add(3500);
         }
         static void WithdrawFunds(string userName, int pinCode)
         {
             Console.WriteLine("Vilket konto vill du ta ut ifrån?\n\n1. Sparkonto.\n2. Lönekonto.");
-          
-           
+
+
             Console.WriteLine("Var god välj 1 eller 2.");
 
             try
@@ -226,15 +361,15 @@ namespace ProjektArbere
                 int userChoice = Convert.ToInt32(Console.ReadLine());
                 if (userChoice == 1)
                 {
-                    Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {savingsAccount.Sum()}kr");
-                    Console.WriteLine("Hur mycket vill du ta ut?");
+                    Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {tagesCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
+
                     double withdrawal = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
                     int newPin = Convert.ToInt32(Console.ReadLine());
                     if (newPin == pinCode)
                     {
-                        savingsAccount[0] -= withdrawal;
-                    Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {savingsAccount.Sum()}");
+                        tagesCheckingAccount[0] -= withdrawal;
+                        Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesCheckingAccount.Sum()}");
 
                     }
                     else
@@ -247,15 +382,15 @@ namespace ProjektArbere
                 }
                 if (userChoice == 2)
                 {
-                    Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {checkingAccount.Sum()}kr");
-                    Console.WriteLine("Hur mycket vill du ta ut?");
+                    Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {tagesGolfAccount.Sum()}kr\nHur mycket vill du ta ut?");
+
                     double withdrawal = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
                     int newPin = Convert.ToInt32(Console.ReadLine());
                     if (newPin == pinCode)
                     {
-                        checkingAccount[0] -= withdrawal;
-                        Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {checkingAccount.Sum()}");
+                        tagesGolfAccount[0] -= withdrawal;
+                        Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesGolfAccount.Sum()}");
 
                     }
                     else
