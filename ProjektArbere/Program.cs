@@ -97,6 +97,7 @@ namespace ProjektArbere
                     pinCode = Convert.ToInt32(Console.ReadLine());
                     if (userIndex != -1 && pinCode == codes[userIndex])
                     {
+                        Console.Clear();
                         Console.WriteLine("Välkommen in, du skrev rätt pinkod");
                         break;
                     }
@@ -141,16 +142,20 @@ namespace ProjektArbere
                             break;
 
                         case 2:
+                            Console.Clear();
                             TransferFunds(userName);
                             break;
 
                         case 3:
+                            Console.Clear();
                             WithdrawFunds(userName, pinCode);
                             break;
 
 
                         case 4:
-                            Console.WriteLine("Nu kommer du tillbaka till inloggningssidan");
+                            Console.Clear();
+                            Console.WriteLine("Tryck på enter så kommer du tillbaka till startsidan");
+                            Console.ReadKey();
                             userOptions = true;
                             break;
 
@@ -184,6 +189,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine("Sparkonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {hansSavingsAccount.Sum()}kr");
@@ -191,6 +197,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine("Matkonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {hansFoodAccount.Sum()}kr");
@@ -198,6 +205,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 3)
                     {
+                        Console.Clear();
                         Console.WriteLine("Resekonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {hansTravelAccount.Sum()}kr");
@@ -220,6 +228,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine("Sparkonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {gretasSavingsAccount.Sum()}kr");
@@ -227,6 +236,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine("Lönekonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {gretasCheckingAccount.Sum()}kr");
@@ -251,6 +261,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine("Sparkonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {görgensSavingsAccount.Sum()}kr");
@@ -258,6 +269,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine("Hälsovårdskonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {görgensHealthAccount.Sum()}kr");
@@ -265,6 +277,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 3)
                     {
+                        Console.Clear();
                         Console.WriteLine("Vildmarkskonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {görgensWildlifeAccount.Sum()}kr");
@@ -287,6 +300,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine("Lönekonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {fransCheckingAccount.Sum()}kr");
@@ -294,6 +308,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine("Lönekonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {fransBowlingAccount.Sum()}kr");
@@ -317,6 +332,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine("Lönekonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {tagesCheckingAccount.Sum()}kr");
@@ -324,6 +340,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine("Golfkonto: ");
 
                         Console.WriteLine($"Ditt saldo är för nuvarande {tagesGolfAccount.Sum()}kr");
@@ -364,6 +381,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -385,6 +403,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Resekonto: \nDitt saldo är för nuvarande {hansTravelAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -405,6 +424,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 3)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Matkonto: \nDitt saldo är för nuvarande {hansFoodAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -439,6 +459,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {gretasSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -460,6 +481,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {gretasCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -495,6 +517,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {görgensSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -516,6 +539,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Hälsokonto: \nDitt saldo är för nuvarande {görgensHealthAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -536,6 +560,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 3)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Vildmarkskonto: \nDitt saldo är för nuvarande {görgensWildlifeAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -570,6 +595,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {fransCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -591,6 +617,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Bowlingkonto: \nDitt saldo är för nuvarande {fransBowlingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -626,6 +653,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {tagesCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -647,6 +675,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Golfkonto: \nDitt saldo är för nuvarande {tagesGolfAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -687,6 +716,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
@@ -729,6 +759,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Resekonto: \nDitt saldo är för nuvarande {hansTravelAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
@@ -766,6 +797,7 @@ namespace ProjektArbere
                     }
                     else if (userChoice == 3)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Matkonto: \nDitt saldo är för nuvarande {hansFoodAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
@@ -814,6 +846,7 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {gretasSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
@@ -853,6 +886,7 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
+                        Console.Clear();
                         Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {gretasCheckingAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
@@ -894,7 +928,7 @@ namespace ProjektArbere
             }
             if (userName == "görgen")
             {
-                Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
+                Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Sparkonto.\n2. Hälsokonto. \n3. Vildmarkskonto");
                 Console.WriteLine("Var god välj 1, 2 eller 3.");
 
                 try
@@ -902,38 +936,39 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
-                        Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {görgensSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansSavingsAccount.Sum())
+                        if (transfer <= görgensSavingsAccount.Sum())
                         {
                             hansSavingsAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansSavingsAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Resekonto. \n2. Matkonto");
+                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {görgensSavingsAccount.Sum()}");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Hälsokonto. \n2. Vildmarkskonto");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
                                 case 1:
-                                    hansTravelAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
+                                    görgensHealthAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {görgensHealthAccount.Sum()}");
                                     break;
 
                                 case 2:
-                                    hansFoodAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
+                                    görgensWildlifeAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Vildmarkskontot är nu {görgensWildlifeAccount.Sum()}");
                                     break;
 
                                 default:
-                                    Console.WriteLine("Välj 1 eller 2");
+                                    Console.WriteLine("Välj 1, 2 eller 3");
                                     break;
 
                             }
 
 
                         }
-                        else if (transfer > hansSavingsAccount.Sum())
+                        else if (transfer > görgensSavingsAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
@@ -944,16 +979,17 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
-                        Console.WriteLine($"Resekonto: \nDitt saldo är för nuvarande {hansTravelAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Hälsokonto: \nDitt saldo är för nuvarande {görgensHealthAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansTravelAccount.Sum())
+                        if (transfer <= görgensHealthAccount.Sum())
                         {
-                            hansTravelAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansTravelAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Matkonto");
+                            görgensHealthAccount[0] -= transfer;
+                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {görgensHealthAccount.Sum()}");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Vildmarkskonto");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
@@ -964,49 +1000,50 @@ namespace ProjektArbere
                                     break;
                                 case 2:
 
-                                    hansFoodAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
+                                    görgensWildlifeAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Vildmarkskontot är nu {görgensWildlifeAccount.Sum()}");
                                     break;
                                 default:
                                     Console.WriteLine("Välj 1 eller 2.");
                                     break;
                             }
                         }
-                        else if (transfer > hansTravelAccount.Sum())
+                        else if (transfer > görgensHealthAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
 
 
                     }
-                    else if (userChoice == 3)
+                    if (userChoice == 3)
                     {
-                        Console.WriteLine($"Matkonto: \nDitt saldo är för nuvarande {hansFoodAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Vildmarkskonto: \nDitt saldo är för nuvarande {görgensWildlifeAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansFoodAccount.Sum())
+                        if (transfer <= görgensWildlifeAccount.Sum())
                         {
-                            hansFoodAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansFoodAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Resekonto");
+                            görgensWildlifeAccount[0] -= transfer;
+                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {görgensWildlifeAccount.Sum()}");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Hälsokonto");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
                                 case 1:
-                                    hansSavingsAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansSavingsAccount.Sum()}");
+                                    görgensSavingsAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Sparkontot är nu {görgensSavingsAccount.Sum()}");
                                     break;
                                 case 2:
-                                    hansTravelAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
+                                    görgensHealthAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Hälsokontot är nu {görgensHealthAccount.Sum()}");
                                     break;
 
                             }
 
                         }
-                        else if (transfer > hansFoodAccount.Sum())
+                        else if (transfer > görgensWildlifeAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
@@ -1018,49 +1055,46 @@ namespace ProjektArbere
                 {
                     Console.WriteLine("Mata in 1, 2 eller 3.");
                 }
-            } // här är jag nu. 
+            } 
             if (userName == "frans")
             {
-                Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
-                Console.WriteLine("Var god välj 1, 2 eller 3.");
+                Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Lönekonto.\n2. Bowlingkonto.");
+                Console.WriteLine("Var god välj 1 eller 2.");
 
                 try
                 {
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
-                        Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {fransCheckingAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansSavingsAccount.Sum())
+                        if (transfer <= fransCheckingAccount.Sum())
                         {
-                            hansSavingsAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansSavingsAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Resekonto. \n2. Matkonto");
+                            fransCheckingAccount[0] -= transfer;
+                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {fransCheckingAccount.Sum()}");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Bowlingkonto");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
                                 case 1:
-                                    hansTravelAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
+                                    fransBowlingAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Bowlingkontot är nu {fransBowlingAccount.Sum()}");
                                     break;
 
-                                case 2:
-                                    hansFoodAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
-                                    break;
-
+                                
                                 default:
-                                    Console.WriteLine("Välj 1 eller 2");
+                                    Console.WriteLine("Välj 1.");
                                     break;
 
                             }
 
 
                         }
-                        else if (transfer > hansSavingsAccount.Sum())
+                        else if (transfer > fransCheckingAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
@@ -1071,123 +1105,85 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
-                        Console.WriteLine($"Resekonto: \nDitt saldo är för nuvarande {hansTravelAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Bowlingkonto: \nDitt saldo är för nuvarande {fransBowlingAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansTravelAccount.Sum())
+                        if (transfer <= fransBowlingAccount.Sum())
                         {
-                            hansTravelAccount[0] -= transfer;
+                            fransBowlingAccount[0] -= transfer;
                             Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansTravelAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Matkonto");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Lönekonto. ");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
                                 case 1:
 
-                                    hansSavingsAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Sparkontot är nu {hansSavingsAccount.Sum()}");
+                                    fransCheckingAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Lönekontot är nu {fransCheckingAccount.Sum()}");
                                     break;
-                                case 2:
-
-                                    hansFoodAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
-                                    break;
+                                
                                 default:
-                                    Console.WriteLine("Välj 1 eller 2.");
+                                    Console.WriteLine("Välj 1.");
                                     break;
                             }
                         }
-                        else if (transfer > hansTravelAccount.Sum())
+                        else if (transfer > fransBowlingAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
 
 
                     }
-                    else if (userChoice == 3)
-                    {
-                        Console.WriteLine($"Matkonto: \nDitt saldo är för nuvarande {hansFoodAccount.Sum()}kr\nHur mycket vill du för över?");
-
-                        double transfer = Convert.ToDouble(Console.ReadLine());
-
-
-                        if (transfer <= hansFoodAccount.Sum())
-                        {
-                            hansFoodAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansFoodAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Resekonto");
-                            int choice = Convert.ToInt32(Console.ReadLine());
-                            switch (choice)
-                            {
-                                case 1:
-                                    hansSavingsAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansSavingsAccount.Sum()}");
-                                    break;
-                                case 2:
-                                    hansTravelAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
-                                    break;
-
-                            }
-
-                        }
-                        else if (transfer > hansFoodAccount.Sum())
-                        {
-                            Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
-                        }
-
-                    }
+                    
                 }
 
                 catch
                 {
-                    Console.WriteLine("Mata in 1, 2 eller 3.");
+                    Console.WriteLine("Mata in 1 eller 2.");
                 }
             }
             if (userName == "tage")
             {
-                Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
-                Console.WriteLine("Var god välj 1, 2 eller 3.");
+                Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Lönekonto.\n2. Golfkonto.");
+                Console.WriteLine("Var god välj 1 eller 2.");
 
                 try
                 {
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
-                        Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {tagesCheckingAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansSavingsAccount.Sum())
+                        if (transfer <= tagesCheckingAccount.Sum())
                         {
-                            hansSavingsAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansSavingsAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Resekonto. \n2. Matkonto");
+                            tagesCheckingAccount[0] -= transfer;
+                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {tagesCheckingAccount.Sum()}");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Golfkontot");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
                                 case 1:
-                                    hansTravelAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
+                                    tagesGolfAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Golfkontot är nu {tagesGolfAccount.Sum()}");
                                     break;
 
-                                case 2:
-                                    hansFoodAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
-                                    break;
 
                                 default:
-                                    Console.WriteLine("Välj 1 eller 2");
+                                    Console.WriteLine("Välj 1.");
                                     break;
 
                             }
 
 
                         }
-                        else if (transfer > hansSavingsAccount.Sum())
+                        else if (transfer > tagesCheckingAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
@@ -1198,79 +1194,44 @@ namespace ProjektArbere
                     }
                     if (userChoice == 2)
                     {
-                        Console.WriteLine($"Resekonto: \nDitt saldo är för nuvarande {hansTravelAccount.Sum()}kr\nHur mycket vill du för över?");
+                        Console.Clear();
+                        Console.WriteLine($"Golfkonto: \nDitt saldo är för nuvarande {tagesGolfAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansTravelAccount.Sum())
+                        if (transfer <= tagesGolfAccount.Sum())
                         {
-                            hansTravelAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansTravelAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Matkonto");
+                            tagesGolfAccount[0] -= transfer;
+                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {tagesGolfAccount.Sum()}");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Lönekonto. ");
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
                                 case 1:
 
-                                    hansSavingsAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Sparkontot är nu {hansSavingsAccount.Sum()}");
+                                    tagesCheckingAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Lönekontot är nu {tagesCheckingAccount.Sum()}");
                                     break;
-                                case 2:
 
-                                    hansFoodAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
-                                    break;
                                 default:
-                                    Console.WriteLine("Välj 1 eller 2.");
+                                    Console.WriteLine("Välj 1.");
                                     break;
                             }
                         }
-                        else if (transfer > hansTravelAccount.Sum())
+                        else if (transfer > tagesGolfAccount.Sum())
                         {
                             Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
                         }
 
 
                     }
-                    else if (userChoice == 3)
-                    {
-                        Console.WriteLine($"Matkonto: \nDitt saldo är för nuvarande {hansFoodAccount.Sum()}kr\nHur mycket vill du för över?");
 
-                        double transfer = Convert.ToDouble(Console.ReadLine());
-
-
-                        if (transfer <= hansFoodAccount.Sum())
-                        {
-                            hansFoodAccount[0] -= transfer;
-                            Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansFoodAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Sparkonto. \n2. Resekonto");
-                            int choice = Convert.ToInt32(Console.ReadLine());
-                            switch (choice)
-                            {
-                                case 1:
-                                    hansSavingsAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansSavingsAccount.Sum()}");
-                                    break;
-                                case 2:
-                                    hansTravelAccount[0] += transfer;
-                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
-                                    break;
-
-                            }
-
-                        }
-                        else if (transfer > hansFoodAccount.Sum())
-                        {
-                            Console.WriteLine("Tyvärr, du har för lite pengar på kontot för att göra den överföringen.");
-                        }
-
-                    }
                 }
 
                 catch
                 {
-                    Console.WriteLine("Mata in 1, 2 eller 3.");
+                    Console.WriteLine("Mata in 1 eller 2.");
                 }
             }
         }
