@@ -25,9 +25,7 @@ namespace ProjektArbere
             bool keepGoing = true;
             AddFunds();
 
-            Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");
-
-
+            ShowUsers();
 
             while (keepGoing)
             {
@@ -57,12 +55,23 @@ namespace ProjektArbere
 
 
 
-
+        static void ShowUsers()
+        {
+            Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");
+            Console.WriteLine("\n\nHär kommer en lista av alla användarnamn");
+            foreach (string user in users)
+            {
+                Console.WriteLine($"\n\t\t{user}\n");
+            }
+            Console.WriteLine("\nValfritt knapptryck för att komma vidare.");
+            Console.ReadKey();
+        }
         static void DoesAccountExist()
         {
             Console.Clear();
-            Console.WriteLine("Skriv ditt förnamn för att se om du har ett konto här: ");
+            Console.WriteLine("Skriv ditt förnamn för att komma vidare: ");
             string userName = Console.ReadLine().ToLower();
+            Console.Clear();
             bool userExists = false;
             int tries = 0;
             do
@@ -129,7 +138,7 @@ namespace ProjektArbere
             while (!userOptions)
             {
 
-                Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Logga ut");
+                Console.WriteLine("\n1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Logga ut\n");
                 try
                 {
                     Console.WriteLine("Var god välj en siffra, 1-4");                               // a simple switch case so the user can easily choose a number from 1-4 depending on what they want to do
@@ -154,8 +163,8 @@ namespace ProjektArbere
 
                         case 4:
                             Console.Clear();
-                            Console.WriteLine("Tryck på enter så kommer du tillbaka till startsidan");              
-                            
+                            Console.WriteLine("Tryck på enter så kommer du tillbaka till startsidan");
+
                             while (Console.ReadKey().Key != ConsoleKey.Enter) { }                   // a while-loop that only lets the user leave whenever they press ENTER
                             userOptions = true;
                             break;
@@ -182,7 +191,7 @@ namespace ProjektArbere
             if (userName == "hans")
             {
                 Console.WriteLine("Det finns tre konton i ditt namn, ett sparkonto, ett matkonto och ett reskonto.");
-                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Lönekonto \n3: Resekonto");
+                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Matkonto \n3: Resekonto");
                 Console.WriteLine("Var god välj 1, 2 eller 3.");
 
                 try
@@ -386,19 +395,26 @@ namespace ProjektArbere
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= hansSavingsAccount.Sum())
                         {
-                            hansSavingsAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal}kr, ditt saldo är nu {hansSavingsAccount.Sum()}");
 
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                hansSavingsAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal}kr, ditt saldo är nu {hansSavingsAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > hansSavingsAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
-
 
 
                     }
@@ -408,17 +424,26 @@ namespace ProjektArbere
                         Console.WriteLine($"Resekonto: \nDitt saldo är för nuvarande {hansTravelAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
-                        {
-                            tagesGolfAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesGolfAccount.Sum()}");
 
-                        }
-                        else
+                        if (withdrawal <= hansTravelAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                tagesGolfAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesGolfAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
+                        }
+                        else if (withdrawal > hansTravelAccount.Sum())
+                        {
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
 
@@ -429,19 +454,29 @@ namespace ProjektArbere
                         Console.WriteLine($"Matkonto: \nDitt saldo är för nuvarande {hansFoodAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
-                        {
-                            hansFoodAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {hansFoodAccount.Sum()}");
 
-                        }
-                        else
-                        {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
-                        }
+                        if (withdrawal <= hansFoodAccount.Sum())
 
+                        {
+
+
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                hansFoodAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {hansFoodAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
+                        }
+                        else if (withdrawal > hansFoodAccount.Sum())
+                        {
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
+                        }
 
                     }
                 }
@@ -464,17 +499,25 @@ namespace ProjektArbere
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {gretasSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= gretasSavingsAccount.Sum())
                         {
-                            gretasSavingsAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {gretasSavingsAccount.Sum()}");
 
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                gretasSavingsAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {gretasSavingsAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > gretasSavingsAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
 
@@ -486,18 +529,27 @@ namespace ProjektArbere
                         Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {gretasCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= gretasCheckingAccount.Sum())
                         {
-                            gretasCheckingAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {gretasCheckingAccount.Sum()}");
 
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                gretasCheckingAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {gretasCheckingAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > gretasCheckingAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
+
 
 
                     }
@@ -522,18 +574,28 @@ namespace ProjektArbere
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {görgensSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= görgensSavingsAccount.Sum())
                         {
-                            görgensSavingsAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {görgensSavingsAccount.Sum()}");
 
+
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                görgensSavingsAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {görgensSavingsAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > görgensSavingsAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
+
 
 
 
@@ -544,17 +606,24 @@ namespace ProjektArbere
                         Console.WriteLine($"Hälsokonto: \nDitt saldo är för nuvarande {görgensHealthAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= görgensHealthAccount.Sum())
                         {
-                            görgensHealthAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {görgensHealthAccount.Sum()}");
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                görgensHealthAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {görgensHealthAccount.Sum()}");
 
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > görgensHealthAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
 
@@ -565,17 +634,25 @@ namespace ProjektArbere
                         Console.WriteLine($"Vildmarkskonto: \nDitt saldo är för nuvarande {görgensWildlifeAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= görgensWildlifeAccount.Sum())
                         {
-                            görgensWildlifeAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {görgensWildlifeAccount.Sum()}");
 
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                görgensWildlifeAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {görgensWildlifeAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > görgensWildlifeAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
 
@@ -600,17 +677,23 @@ namespace ProjektArbere
                         Console.WriteLine($"Lönekonto: \nDitt saldo är för nuvarande {fransCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= fransCheckingAccount.Sum())
                         {
-                            fransCheckingAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {fransCheckingAccount.Sum()}");
-
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                fransCheckingAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {fransCheckingAccount.Sum()}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > fransCheckingAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
 
@@ -622,18 +705,27 @@ namespace ProjektArbere
                         Console.WriteLine($"Bowlingkonto: \nDitt saldo är för nuvarande {fransBowlingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= fransBowlingAccount.Sum())
                         {
-                            fransBowlingAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {fransBowlingAccount.Sum()}");
 
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                fransBowlingAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {fransBowlingAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > fransBowlingAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
+
 
 
                     }
@@ -658,17 +750,25 @@ namespace ProjektArbere
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {tagesCheckingAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                        int newPin = Convert.ToInt32(Console.ReadLine());
-                        if (newPin == pinCode)
+                        if (withdrawal <= tagesCheckingAccount.Sum())
                         {
-                            tagesCheckingAccount[0] -= withdrawal;
-                            Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesCheckingAccount.Sum()}");
 
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            if (newPin == pinCode)
+                            {
+                                tagesCheckingAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesCheckingAccount.Sum()}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            }
                         }
-                        else
+                        else if (withdrawal > tagesCheckingAccount.Sum())
                         {
-                            Console.WriteLine("Tyvärr, det var fel pinkod.");
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
 
@@ -680,7 +780,10 @@ namespace ProjektArbere
                         Console.WriteLine($"Golfkonto: \nDitt saldo är för nuvarande {tagesGolfAccount.Sum()}kr\nHur mycket vill du ta ut?");
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
+                        if (withdrawal <= tagesGolfAccount.Sum())
+                        {
+
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
                         int newPin = Convert.ToInt32(Console.ReadLine());
 
                         if (newPin == pinCode)
@@ -693,7 +796,11 @@ namespace ProjektArbere
                         {
                             Console.WriteLine("Tyvärr, det var fel pinkod.");
                         }
-
+                        }
+                        else if (withdrawal > tagesGolfAccount.Sum())
+                        {
+                            Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
+                        }
 
                     }
 
@@ -732,22 +839,22 @@ namespace ProjektArbere
                             switch (choice)
                             {
                                 case 1:
-                                hansTravelAccount[0] += transfer;
-                                Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
+                                    hansTravelAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
                                     break;
 
                                 case 2:
-                                hansFoodAccount[0] += transfer;
-                                Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
+                                    hansFoodAccount[0] += transfer;
+                                    Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Matkontot är nu {hansFoodAccount.Sum()}");
                                     break;
 
                                 default:
                                     Console.WriteLine("Välj 1 eller 2");
-                                    break; 
+                                    break;
 
                             }
-                           
-                            
+
+
                         }
                         else if (transfer > hansSavingsAccount.Sum())
                         {
@@ -866,7 +973,7 @@ namespace ProjektArbere
                                     Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Lönekontot är nu {gretasCheckingAccount.Sum()}");
                                     break;
 
-                             
+
 
                                 default:
                                     Console.WriteLine("Välj siffran 1.");
@@ -906,7 +1013,7 @@ namespace ProjektArbere
                                     gretasSavingsAccount[0] += transfer;
                                     Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Sparkontot är nu {gretasSavingsAccount.Sum()}");
                                     break;
-                              
+
                                 default:
                                     Console.WriteLine("Välj 1.");
                                     break;
@@ -919,7 +1026,7 @@ namespace ProjektArbere
 
 
                     }
-                   
+
                 }
 
                 catch
@@ -1056,7 +1163,7 @@ namespace ProjektArbere
                 {
                     Console.WriteLine("Mata in 1, 2 eller 3.");
                 }
-            } 
+            }
             if (userName == "frans")
             {
                 Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Lönekonto.\n2. Bowlingkonto.");
@@ -1086,7 +1193,7 @@ namespace ProjektArbere
                                     Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Bowlingkontot är nu {fransBowlingAccount.Sum()}");
                                     break;
 
-                                
+
                                 default:
                                     Console.WriteLine("Välj 1.");
                                     break;
@@ -1125,7 +1232,7 @@ namespace ProjektArbere
                                     fransCheckingAccount[0] += transfer;
                                     Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Lönekontot är nu {fransCheckingAccount.Sum()}");
                                     break;
-                                
+
                                 default:
                                     Console.WriteLine("Välj 1.");
                                     break;
@@ -1138,7 +1245,7 @@ namespace ProjektArbere
 
 
                     }
-                    
+
                 }
 
                 catch
