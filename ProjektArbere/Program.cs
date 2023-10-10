@@ -32,7 +32,7 @@ namespace ProjektArbere
             while (keepGoing)
             {
 
-                DoesAccountExist();
+                DoesAccountExist();                                             // a method to control/login from the user to see if the account name and password is correct and existing
 
 
             }
@@ -60,15 +60,15 @@ namespace ProjektArbere
 
         static void DoesAccountExist()
         {
-
+            Console.Clear();
             Console.WriteLine("Skriv ditt förnamn för att se om du har ett konto här: ");
             string userName = Console.ReadLine().ToLower();
             bool userExists = false;
             int tries = 0;
             do
             {
-                for (int i = 0; i < users.Length; i++)
-                {
+                for (int i = 0; i < users.Length; i++)                                      // a for-loop that loops through the user checks if the input matches any of the name in the array of users.
+                {                                                                           // if the user exists the bool sets to true and leaves the do-while loop
                     if (users[i] == userName)
                     {
                         Console.WriteLine($"Hej och välkommen {users[i]}");
@@ -88,15 +88,15 @@ namespace ProjektArbere
 
             Console.WriteLine("Nu vill jag att du matar in din tillhörande pinkod till ditt konto, du har 3 försök på dig");
             Console.Write("Skriv in kod: ");
-            while (tries < 3)
+            while (tries < 3)                                       // a whileloop with 3 tries, if the users enters wrong password 3 times the program will shut down. 
             {
                 try
                 {
 
-                    int userIndex = Array.IndexOf(users, userName);
-                    pinCode = Convert.ToInt32(Console.ReadLine());
-                    if (userIndex != -1 && pinCode == codes[userIndex])
-                    {
+                    int userIndex = Array.IndexOf(users, userName);                                    // sort out the index of the users array that matches the userName so we can get the same index from
+                    pinCode = Convert.ToInt32(Console.ReadLine());                                      // out int array - codes 
+                    if (userIndex != -1 && pinCode == codes[userIndex])                                 // check if the userIndex isnt -1 cause i have nothing there, and then if pincode is the same location as 
+                    {                                                                                   // codes and the user from the arrays
                         Console.Clear();
                         Console.WriteLine("Välkommen in, du skrev rätt pinkod");
                         break;
@@ -120,7 +120,7 @@ namespace ProjektArbere
                 }
 
             }
-            MainMenu(userName, pinCode);
+            MainMenu(userName, pinCode);                                                                    // calls on the second method MainMenu()
 
         }
         static void MainMenu(string userName, int pinCode)
@@ -132,30 +132,31 @@ namespace ProjektArbere
                 Console.WriteLine("1. Se dina konton och saldo \n2. Överföring mellan konton \n3. Ta ut pengar \n4. Logga ut");
                 try
                 {
-                    Console.WriteLine("Var god välj en siffra, 1-4");
+                    Console.WriteLine("Var god välj en siffra, 1-4");                               // a simple switch case so the user can easily choose a number from 1-4 depending on what they want to do
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
                         case 1:
                             Console.Clear();
-                            UserAccounts(userName);
+                            UserAccounts(userName);                                                 // Check the account, what existing accounts are visible for the user thats logged in. 
                             break;
 
                         case 2:
                             Console.Clear();
-                            TransferFunds(userName);
+                            TransferFunds(userName);                                                //Lets the user transfer money between their own accounts. 
                             break;
 
                         case 3:
                             Console.Clear();
-                            WithdrawFunds(userName, pinCode);
+                            WithdrawFunds(userName, pinCode);                                       //Lets the user withdraw money from any of the accounts of their choice. 
                             break;
 
 
                         case 4:
                             Console.Clear();
-                            Console.WriteLine("Tryck på enter så kommer du tillbaka till startsidan");
-                            Console.ReadKey();
+                            Console.WriteLine("Tryck på enter så kommer du tillbaka till startsidan");              
+                            
+                            while (Console.ReadKey().Key != ConsoleKey.Enter) { }                   // a while-loop that only lets the user leave whenever they press ENTER
                             userOptions = true;
                             break;
 
@@ -177,7 +178,7 @@ namespace ProjektArbere
             }
         }
         static void UserAccounts(string userName)
-        {
+        {                                                               // depending on what name is logged in, the specific if case is chosen. 
             if (userName == "hans")
             {
                 Console.WriteLine("Det finns tre konton i ditt namn, ett sparkonto, ett matkonto och ett reskonto.");
@@ -355,7 +356,7 @@ namespace ProjektArbere
             }
         }
         static void AddFunds()
-        {
+        {                                                                                 //just did a bunch of adding to each list so they all had a value at the beginning of the program
             hansFoodAccount.Add(10000);
             hansSavingsAccount.Add(15000);
             hansTravelAccount.Add(9000);
@@ -370,7 +371,7 @@ namespace ProjektArbere
             tagesGolfAccount.Add(3500);
         }
         static void WithdrawFunds(string userName, int pinCode)
-        {
+        {                                                       // depending on what name is logged in, the specific if case is chosen. 
             if (userName == "hans")
             {
                 Console.WriteLine("Vilket konto vill du ta ut ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
@@ -705,7 +706,7 @@ namespace ProjektArbere
 
         }
         static void TransferFunds(string userName)
-        {
+        {                                                                   // depending on what name is logged in, the specific if case is chosen. 
             if (userName == "hans")
             {
                 Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
