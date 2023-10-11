@@ -57,7 +57,7 @@ namespace ProjektArbere
 
         static void ShowUsers()
         {
-            Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");
+            Console.WriteLine("Hej och välkommen till Bluff o båg Bank AB");                            // simple method that show up at the start of the program, showing all the available usernames
             Console.WriteLine("\n\nHär kommer en lista av alla användarnamn");
             foreach (string user in users)
             {
@@ -88,10 +88,10 @@ namespace ProjektArbere
 
                 if (!userExists)
                 {
-                    Console.WriteLine($"Tyvärr har vi ingen med namnet som {userName} kund här.\n Var vänlig testa igen");
+                    Console.WriteLine($"Tyvärr har vi ingen med namnet som {userName} kund här.\n Var vänlig testa igen");              // if the user tries to enter a username that doesnt exist this will happen
                     userName = Console.ReadLine().ToLower();
                 }
-            } while (!userExists);
+            } while (!userExists);                                                                                                      //keeps the loop going until the user puts in a username that does exist
 
             int pinCode = 0;
 
@@ -111,14 +111,14 @@ namespace ProjektArbere
                         break;
                     }
 
-                    if (tries == 2)
+                    if (tries == 2)                                                                     // since i start the pincode at 0; I chose to have tries == 2 as the ending, cause in that case the user gets to try it 3 times before it shut down.
                     {
                         Console.WriteLine("Du skrev fel kod tre gånger, nu stängs programmet ner");
                         Environment.Exit(0);
 
                     }
                     else
-                    {
+                    {                                                                                     // adds the tries counter by one for each wrongful attempts at the password.
                         Console.WriteLine("Fel kod, försök igen:");
                         tries++;
                     }
@@ -142,7 +142,7 @@ namespace ProjektArbere
                 try
                 {
                     Console.WriteLine("Var god välj en siffra, 1-4");                               // a simple switch case so the user can easily choose a number from 1-4 depending on what they want to do
-                    int choice = Convert.ToInt32(Console.ReadLine());
+                    int choice = Convert.ToInt32(Console.ReadLine());                               // depending on the choice all cases directs the user to a specific method 
                     switch (choice)
                     {
                         case 1:
@@ -190,9 +190,9 @@ namespace ProjektArbere
         {                                                               // depending on what name is logged in, the specific if case is chosen. 
             if (userName == "hans")
             {
-                Console.WriteLine("Det finns tre konton i ditt namn, ett sparkonto, ett matkonto och ett reskonto.");
-                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Matkonto \n3: Resekonto");
-                Console.WriteLine("Var god välj 1, 2 eller 3.");
+                Console.WriteLine("Det finns tre konton i ditt namn, ett sparkonto, ett matkonto och ett reskonto.");           // lets the user see the various of accounts in their name, depending on what
+                Console.WriteLine("Vill du se saldot för \n1: Sparkonto. \n2: Matkonto \n3: Resekonto");                        // account the user wants to see, it has to put in the correct number
+                Console.WriteLine("Var god välj 1, 2 eller 3.");                                                                // and all users have the same logic, only thing that changes are the amount of accounts.
 
                 try
                 {
@@ -380,7 +380,7 @@ namespace ProjektArbere
             tagesGolfAccount.Add(3500);
         }
         static void WithdrawFunds(string userName, int pinCode)
-        {                                                       // depending on what name is logged in, the specific if case is chosen. 
+        {                                                       // depending on what name is logged in, the specific if case is chosen. Same structure for all the users, just amounts of accounts and the name change.
             if (userName == "hans")
             {
                 Console.WriteLine("Vilket konto vill du ta ut ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
@@ -392,14 +392,14 @@ namespace ProjektArbere
                     if (userChoice == 1)
                     {
                         Console.Clear();
-                        Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?");
+                        Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du ta ut?"); // asks the user how much they wanna withdraw
 
                         double withdrawal = Convert.ToDouble(Console.ReadLine());
-                        if (withdrawal <= hansSavingsAccount.Sum())
+                        if (withdrawal <= hansSavingsAccount.Sum())                                                             //checks if the withdrawal is the same or lower then the total sum of the account, if thats true this will execute.
                         {
 
-                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");
-                            int newPin = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Var god skriv in din pinkod för att fullfölja uttaget");         // the user has to use the correct pincode in order to confirm the withdrawal
+                            int newPin = Convert.ToInt32(Console.ReadLine());                                   // if the user fails with the password, the users if returned to the loginsite.
                             if (newPin == pinCode)
                             {
                                 hansSavingsAccount[0] -= withdrawal;
@@ -411,8 +411,8 @@ namespace ProjektArbere
                                 Console.WriteLine("Tyvärr, det var fel pinkod.");
                             }
                         }
-                        else if (withdrawal > hansSavingsAccount.Sum())
-                        {
+                        else if (withdrawal > hansSavingsAccount.Sum())                                         // and if the withdrawal is greater then the sum, nothing more will happend then a message
+                        {                                                                                       // saying, "not enough funds" 
                             Console.WriteLine("Du kan inte ta ut mer än vad du har på kontot.");
                         }
 
@@ -813,7 +813,7 @@ namespace ProjektArbere
 
         }
         static void TransferFunds(string userName)
-        {                                                                   // depending on what name is logged in, the specific if case is chosen. 
+        {                                                                   // depending on what name is logged in, the specific if case is chosen. commented the first account, all is basicly the same 
             if (userName == "hans")
             {
                 Console.WriteLine("Vilket konto villför över ifrån?\n\n1. Sparkonto.\n2. Resekonto. \n3. Matkonto");
@@ -824,21 +824,21 @@ namespace ProjektArbere
                     int userChoice = Convert.ToInt32(Console.ReadLine());
                     if (userChoice == 1)
                     {
-                        Console.Clear();
+                        Console.Clear();                                                                                                            //show the total, and asks how much that the user wanna transfer
                         Console.WriteLine($"Sparkonto: \nDitt saldo är för nuvarande {hansSavingsAccount.Sum()}kr\nHur mycket vill du för över?");
 
                         double transfer = Convert.ToDouble(Console.ReadLine());
 
 
-                        if (transfer <= hansSavingsAccount.Sum())
-                        {
-                            hansSavingsAccount[0] -= transfer;
+                        if (transfer <= hansSavingsAccount.Sum())                                           //as in the withdrawal method, checks if the transfer is equal to or less then the sum, in order to 
+                        {                                                                                   // execute this sequence
+                            hansSavingsAccount[0] -= transfer;                                              // removes the transfer sum from the account
                             Console.WriteLine($"Du har valt att föra över {transfer}kr, ditt saldo är nu {hansSavingsAccount.Sum()}");
-                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Resekonto. \n2. Matkonto");
+                            Console.WriteLine("Till vilket konto vill du föra över? \n1. Resekonto. \n2. Matkonto");                // asks the user to wich account they wanna transfer the funds. 
                             int choice = Convert.ToInt32(Console.ReadLine());
                             switch (choice)
                             {
-                                case 1:
+                                case 1:                                                                                             // adds the transfer funds to the new account and show the sum of the new account
                                     hansTravelAccount[0] += transfer;
                                     Console.WriteLine($"Du har fört över {transfer}kr, ditt totalbelopp på Resekontot är nu {hansTravelAccount.Sum()}");
                                     break;
