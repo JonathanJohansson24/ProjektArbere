@@ -5,7 +5,7 @@ namespace ProjektArbere
 {
     internal class Program
     {
-        static List<double> hansSavingsAccount = new List<double>();
+        static List<double> hansSavingsAccount = new List<double>();                                       // all of the accounts
         static List<double> hansFoodAccount = new List<double>();
         static List<double> hansTravelAccount = new List<double>();
         static List<double> gretasCheckingAccount = new List<double>();
@@ -17,8 +17,8 @@ namespace ProjektArbere
         static List<double> fransBowlingAccount = new List<double>();
         static List<double> tagesCheckingAccount = new List<double>();
         static List<double> tagesGolfAccount = new List<double>();
-        static string[] users = new string[] { "hans", "greta", "görgen", "frans", "tage" };
-        static int[] codes = new int[] { 1177, 2323, 4455, 9900, 8585 };
+        static string[] users = new string[] { "hans", "greta", "görgen", "frans", "tage" };                //user array
+        static int[] codes = new int[] { 1177, 2323, 4455, 9900, 8585 };                                    // passcode array
 
         static void Main(string[] args)
         {
