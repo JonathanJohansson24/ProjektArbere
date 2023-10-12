@@ -114,6 +114,7 @@ namespace ProjektArbere
                     if (tries == 2)                                                                     // since i start the pincode at 0; I chose to have tries == 2 as the ending, cause in that case the user gets to try it 3 times before it shut down.
                     {
                         Console.WriteLine("Du skrev fel kod tre gånger, nu stängs programmet ner");
+                        Console.ReadKey();
                         Environment.Exit(0);
 
                     }
