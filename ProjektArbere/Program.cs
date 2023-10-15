@@ -433,8 +433,8 @@ namespace ProjektArbere
                             int newPin = Convert.ToInt32(Console.ReadLine());
                             if (newPin == pinCode)
                             {
-                                tagesGolfAccount[0] -= withdrawal;
-                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {tagesGolfAccount.Sum()}");
+                                hansTravelAccount[0] -= withdrawal;
+                                Console.WriteLine($"Du har valt att ta ut {withdrawal} ditt saldo är nu {hansTravelAccount.Sum()}");
 
                             }
                             else
